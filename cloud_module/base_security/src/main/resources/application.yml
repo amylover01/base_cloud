@@ -1,0 +1,46 @@
+server:
+  port: 8018
+#  servlet:
+#    session:
+#      timeout: 6h
+
+spring:
+  #  main:
+  #    web-application-type: none
+  #  security:
+  #    user:
+  #      name: security_admin #设置默认登录用户名
+  #      password: security_admin #设置默认登录密码 不设置会在控制台打印出，默认用户名是user
+  datasource:
+    url: jdbc:mysql://localhost:3306/security_dev?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2b8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      read-only: false
+      connection-timeout: 60000
+      idle-timeout: 60000
+      validation-timeout: 3000
+      max-lifetime: 60000
+      login-timeout: 5
+      maximum-pool-size: 60
+      minimum-idle: 10
+  jpa:
+    generate-ddl: false
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+    database: mysql
+    open-in-view: true
+
+jwt:
+  token-header-key: Authorization
+  token-prefix: NonceToken
+  token-expiration: 43200000 #12*60*60*1000 12小时
+  token-secret: NonceJwtSecret
+
+
+rsa:
+  key:
+    privateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDJNR8R3hyf+YwP75ybxgVHs8dejlWvzIo9p/WylMtIkNbSZFFJ3c2LxWbE2/BB47B/4LUYxBvWcvkRvRmj5666y3j7RD9hoYoeaLzI5qhj4l4grOMapSKWFRepRFNN/uPh470vbPreMhUxpM1ChPQN1UdMEaLphoQFJ7MJerPrOU3vu5QYfaN/crl/n1ewtQ110RqRBUm1nu5LRKMOkEXV5bpAHyhi86pdGxAqeBgQEe1MnoAvmPUfcHre3muDWYw9xl4wX4KpJu0n4LmwFSkoR5Atohlvf1yeQprI5fEpJ8kU+m+BFSVtMkAhN8oRxU4PYIsu4LBCAWDRgfsGVR63AgMBAAECggEBAI5jzIANin5f0JH6hP7sLRJoFMBCxDrr6izl7weZKx9IeO5dVfWLRQoUAb1w1F8crexhbmd/aR/jL4YxJ7MJo2rH0e8nhh8mfaM1hdw695HwQaKoFvPlR0uk06DTHI0Gw+g5DcpBOmwCT2NZeHUJt9kORS19EahnrIglZxtfPXJJUWriNqNlDkwtAyJIen20gv6DomrIJ61HFNKJU+pwIQS8TcOYGWDkl/8AUfUHwY25yh8wwTmX0zdwFOUokGflfUCX6nEsnx4MChV4ibFBHGCLByfN00VvzypkBjXYOiIcKLPYAepo9cXKDfchnPwnWzjJA0MpwoZHR0CyZiId2zECgYEA/EO9q+6nQH83SzDEkJedFcUZm3YUGG6Nw/RZsFMOltYMto4Scj1zItCWSnSmqocTGSE988uI2KsPP9MxdsXOCc9BmImIwxzj05YeqiXsJiEUkFm3BLAb6Z/S9Y+UrN9wa8wXLdeW9fj0yAPKhs3TJwN+R9QjAqbILui2UwB/yK8CgYEAzC/Wnrm3d4LPmHXs6rXarZIzP9uWxWcnlgVNVFsZOyV2hHdQmr20GdzlNTk9ODp1a9XfHR3UWZhmZTFpWkdsUQ6jzF/PfPh7M6iKRCqBE2bN7GvcOh1joi/Ca+9sGpWfQr7sZgSvajf1whKqZ34k54qBX/ZZCG72Mu4+1QiN/HkCgYAYTMoziqyvyNFhu9PjfcdS9oaN9CThaZzcWGhfVNDd9MaKu0rJmGPD4cXobC411Qcg75PRLTUEcg3o/wYPw+QiC8Xs1KrI6LqFgjt39mk2Dw+1C/9WQ0SdD5k5sFgJAwkISUOeVdsj3JRvw/W5YJBLfMmoT6YDtl8oLaCKhEzK3wKBgDDItTRTFtx86nB4rFQfgtG5fnkhU9JyJOkY9zLSWSLifoCDqURvUppjRngC5veKMAfFn3rrZ5LIcJ54wb0KF3z+THBF6+Ll0zmyaOaEaTZjd4um8YUJBIb5djAnkeKAIP7ncr+lGuv71sG5h/EWGGchlmuBBiCXskbU2To4wwOxAoGAErzONYsJIG73OSnq5cgfnf3hIodyCrDpIz57GcXE+VFd93k0A3KoiG54Z7ZOj6MtS8MHO31GgsPctVSUYuzlXRV7pdDhAm8jf24Wc6i7fav34UfHG+eFamO2X/ProgFRxOX5jQlaEDdWSodAMxkDHzDbhbMgXoUzH12Hn2cYhTI=
+    publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyTUfEd4cn/mMD++cm8YFR7PHXo5Vr8yKPaf1spTLSJDW0mRRSd3Ni8VmxNvwQeOwf+C1GMQb1nL5Eb0Zo+euust4+0Q/YaGKHmi8yOaoY+JeIKzjGqUilhUXqURTTf7j4eO9L2z63jIVMaTNQoT0DdVHTBGi6YaEBSezCXqz6zlN77uUGH2jf3K5f59XsLUNddEakQVJtZ7uS0SjDpBF1eW6QB8oYvOqXRsQKngYEBHtTJ6AL5j1H3B63t5rg1mMPcZeMF+CqSbtJ+C5sBUpKEeQLaIZb39cnkKayOXxKSfJFPpvgRUlbTJAITfKEcVOD2CLLuCwQgFg0YH7BlUetwIDAQAB
